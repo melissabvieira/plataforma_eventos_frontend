@@ -5,6 +5,7 @@
       <nav>
         <router-link to="/">Home</router-link> |
         <router-link to="/eventos">Eventos</router-link>
+        <router-link to="/registrar-evento">Registrar Evento</router-link>
       </nav>
     </header>
 
