@@ -1,4 +1,4 @@
-# eventos-plataforma-frontend
+## Eventos-plataforma-frontend
 
 ## Project setup
 ```
