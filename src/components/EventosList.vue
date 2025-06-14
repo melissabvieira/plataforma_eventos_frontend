@@ -6,7 +6,7 @@
       <div
         class="col-12 col-sm-6 col-md-4"
         v-for="evento in eventos"
-        :key="evento._id"
+        :key="evento.id"
       >
         <div class="card h-100 shadow-sm border-0">
           <div class="card-body d-flex flex-column justify-content-between">
@@ -20,17 +20,51 @@
               </p>
             </div>
             <div class="mt-auto d-flex justify-content-between">
-              <router-link
-                :to="`/eventos/${evento._id}`"
+              <button
                 class="btn btn-outline-primary btn-sm"
+                @click="abrirModalVisualizar(evento.id)"
               >
                 Visualizar
-              </router-link>
+              </button>
               <button
                 class="btn btn-success btn-sm"
-                @click="abrirModal(evento._id)"
+                @click="abrirModal(evento.id)"
               >
                 Inscrever
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="modalVisualizar"
+      tabindex="-1"
+      aria-hidden="true"
+      ref="modalVisualizar"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Detalhes do Evento</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Fechar"
+            ></button>
+          </div>
+          <div class="modal-body" v-if="eventoSelecionado">
+            <p><strong>Tema:</strong> {{ eventoSelecionado.tema }}</p>
+            <p><strong>Descrição:</strong> {{ eventoSelecionado.descricao_evento }}</p>
+            <p><strong>Data:</strong> {{ formatarData(eventoSelecionado.data_evento) }}</p>
+            <p><strong>Vagas disponíveis:</strong> {{ eventoSelecionado.vagas_disponiveis }}</p>
+            <p><strong>Vagas totais:</strong> {{ eventoSelecionado.vagas_totais }}</p>
+            <div class="d-flex justify-content-end mt-4">
+              <button class="btn btn-danger" @click="deletarEvento">
+                Excluir Evento
               </button>
             </div>
           </div>
@@ -80,6 +114,7 @@ export default {
       email: '',
       eventoSelecionado: null,
       modalInstance: null,
+      modalVisualizarInstance: null,
     };
   },
   async created() {
@@ -106,6 +141,37 @@ export default {
         this.modalInstance = new bootstrap.Modal(modalEl);
       }
       this.modalInstance.show();
+    },
+    async abrirModalVisualizar(eventoId) {
+      try {
+        const response = await axios.get(`${process.env.VUE_APP_API_BASE_URL}/eventos/${eventoId}`);
+        this.eventoSelecionado = response.data;
+
+        if (!this.modalVisualizarInstance) {
+          const modalEl = this.$refs.modalVisualizar;
+          this.modalVisualizarInstance = new bootstrap.Modal(modalEl);
+        }
+
+        this.modalVisualizarInstance.show();
+      } catch (error) {
+        console.error('Erro ao buscar detalhes do evento:', error);
+      }
+    },
+    async deletarEvento() {
+      if (!this.eventoSelecionado) return;
+
+      const confirmacao = confirm('Tem certeza que deseja excluir este evento?');
+      if (!confirmacao) return;
+
+      try {
+        await axios.delete(`${process.env.VUE_APP_API_BASE_URL}/eventos/${this.eventoSelecionado.id}`);
+        alert('Evento excluído com sucesso.');
+        this.modalVisualizarInstance.hide();
+        await this.carregarEventos();
+      } catch (error) {
+        console.error('Erro ao excluir evento:', error);
+        alert('Erro ao excluir evento.');
+      }
     },
     async confirmarInscricao() {
       if (!this.nome || !this.email) {
