@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { Chart, registerables } from 'chart.js';
+import { Chart, registerables } from 'chart.js'; // importa as bibliotecas graficas de java script 
 
 Chart.register(...registerables);
 
@@ -28,7 +28,7 @@ export default {
   mounted() {
     this.renderChart();
   },
-  watch: {
+  watch: {            //para detectar quando os dados mudam e atualizar o gráfico//
     data: {
       handler() {
         this.chart.destroy();

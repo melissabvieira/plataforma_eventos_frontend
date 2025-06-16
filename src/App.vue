@@ -2,21 +2,20 @@
   <div id="app">
     <header class="app-header">
       <h1>Sistema de Gestão de Eventos</h1>
+      <nav>
+        <router-link to="/" class="btn btn-outline-light btn-sm">Início</router-link>
+        <router-link to="/eventos" class="btn btn-outline-light btn-sm">Eventos</router-link>
+        <router-link to="/registrar-evento" class="btn btn-outline-light btn-sm">Cadastrar Evento</router-link>
+        <router-link to="/grafico-eventos" class="btn btn-outline-light btn-sm">Dashboard</router-link>
+      </nav>
     </header>
 
     <main class="app-main">
-      <div class="button-container">
-        <router-link to="/" class="btn btn-outline-primary btn-lg">Início</router-link>
-        <router-link to="/eventos" class="btn btn-outline-primary btn-lg">Eventos</router-link>
-        <router-link to="/registrar-evento" class="btn btn-outline-primary btn-lg">Cadastrar Evento</router-link>
-        <router-link to="/grafico-eventos" class="btn btn-outline-primary btn-lg">Dashboard</router-link>
-      </div>
-
       <router-view />
     </main>
 
     <footer class="app-footer">
-      &copy; 2025 - Minha Empresa. Todos os direitos reservados.
+      &copy; 2025 - TICKETMAIS. Todos os direitos reservados.
     </footer>
   </div>
 </template>
@@ -41,21 +40,17 @@ body {
   text-align: center;
 }
 
+.app-header nav {
+  margin-top: 0.rem;
+}
+
+.app-header nav .btn {
+  margin: 0 0.3rem;
+}
+
 .app-main {
   padding: 2rem;
   min-height: 70vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.button-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
 }
 
 .app-footer {
