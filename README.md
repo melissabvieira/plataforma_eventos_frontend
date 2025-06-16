@@ -1,4 +1,5 @@
 🎟️ Sistema de Gestão de Eventos - TICKETMAIS
+
 Este é um projeto simples de um Sistema de Gestão de Eventos, desenvolvido utilizando Vue.js. O sistema oferece uma interface básica com navegação entre as principais seções: Início, Eventos, Cadastro de Evento e um Dashboard de Gráficos.
 
 📋 Funcionalidades Principais
