@@ -1,28 +1,28 @@
-### 🎉 Plataforma de Eventos - Projeto de Banco de Dados Não Relacional
+🎟️ Sistema de Gestão de Eventos - TICKETMAIS
+Este é um projeto simples de um Sistema de Gestão de Eventos, desenvolvido utilizando Vue.js. O sistema oferece uma interface básica com navegação entre as principais seções: Início, Eventos, Cadastro de Evento e um Dashboard de Gráficos.
 
-Este repositório contém o projeto Plataforma de Eventos, desenvolvido em PHP com conexão ao MongoDB, como parte da disciplina de Banco de Dados Não Relacional do 3º semestre da Fatec Araras.
+📋 Funcionalidades Principais
+✅ Página inicial com navegação entre seções
+✅ Listagem de eventos cadastrados no banco de dados MongoDB
+✅ Cadastro de novos eventos via formulário
+✅ Dashboard com gráficos de eventos
+✅ Integração Frontend (Vue.js) ↔️ Backend (PHP + MongoDB)
 
-### 👥 Integrantes
-Melissa Vieira e Caroline Vantim
+🛠️ Tecnologias Utilizadas
+Frontend
+Vue.js
+
+Vue Router
+
+HTML5 / CSS3
+
+Backend
+PHP 8+
+
+MongoDB
+
+Extensão MongoDB para PHP (mongodb + composer mongodb/mongodb)
 
 
-### ⚙️ Funcionalidades: 
-C R U D
-
-Cadastro de eventos
-
-Listagem de eventos
-
-Edição e exclusão de eventos
-
-Integração com o MongoDB para armazenamento de dados
-
-Interface web simples para interação com os dados
 
 
-
-### 🎓 Instituição
-FATEC - Faculdade de Tecnologia de Araras
-Curso de Desenvolvimento de Software Multiplataforma
-Disciplina: Banco de Dados Não Relacional
-3º Semestre 
